@@ -19,6 +19,7 @@ Modul'air peut être déployé en station:
 ## Structure
 - [`capteurs/`](/capteurs/README.md) :  Liste exhaustives des capteurs disponibles.
 - [`/docs`](/docs/README.md) :  Documentation technique.
+- [`/docs/data`](/docs/data/README.md) :  Exxemples de jeux de données fournis par les capteurs.
 - [`/docs/lexique.md`](/docs/lexique.md) : Lexique des polluants et paramètres mesurés.
 - [`/docs/lexiqueInterfaces.md`](/docs/lexiqueInterfaces.md) : Lexique des interfaces.
 - [`/game`](/game/README.md) : Modul'air tamagoshi
