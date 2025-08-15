@@ -1,5 +1,14 @@
-workshops/simulation/venv/
+./vscode/
+workshops/simulation/dashboard/venv/
+workshops\simulation\dashboard\static\js\main_copy.js
+workshops\simulation\dashboard\static\scss\main_copy.scss
+workshops\simulation\dashboard\static\css\main_copy.css.map
+workshops\simulation\dashboard\static\css\main_copy.min.css
+workshops\simulation\dashboard\static\css\main_copy.min.css.map
+workshops\simulation\dashboard\templates\index_copy.html
+workshops/simulation/app1.py
 docs/systemes.md
+game/graphics/
 game/js/
 game/python/
 game/svg/IMG_1557.PNG

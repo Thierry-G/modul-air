@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/main.min.css') }}">
+</head>
+
+<body>
+    
+    <body>
+    <div class="cloud cloud-1"></div>
+    <div class="cloud cloud-2"></div>
+    
+    <header>
+        <h1>🌤️ Air Quality Cartoon Dashboard</h1>
+        <div class="subtitle">Monitor pollution levels with fun gauges!</div>
+    </header>
+    
+    <div class="dashboard">
+        <!-- CO2 Gauge -->
+        <div class="gauge-container">
+            <div class="pollutant-header">
+                <div class="pollutant-icon">CO₂</div>
+                <div>
+                    <div class="pollutant-name">Carbon Dioxide</div>
+                    <div class="pollutant-value">Current: 1200 ppm</div>
+                </div>
+            </div>
+            
+            <div class="gauge">
+                <div class="gauge-face">
+                    <div class="gauge-fill" id="co2-fill" style="background: #FF9800;"></div>
+                </div>
+                <div class="gauge-center"></div>
+                <div class="gauge-needle" id="co2-needle" style="transform: translateX(-50%) rotate(-45deg);"></div>
+            </div>
+            
+            <div class="toxicity-level" style="background: #FF9800;">Moyennement toxique</div>
+            
+            <div class="gauge-levels">
+                <div class="level level-0">0</div>
+                <div class="level level-1">1</div>
+                <div class="level level-2">2</div>
+                <div class="level level-3">3</div>
+                <div class="level level-4">4</div>
+                <div class="level level-5">5</div>
+            </div>
+            
+            <div class="sensor-info">Sensors: MH-Z19, SCD30, SCD4x, S8</div>
+        </div>
+        
+        <!-- CO Gauge -->
+        <div class="gauge-container">
+            <div class="pollutant-header">
+                <div class="pollutant-icon">CO</div>
+                <div>
+                    <div class="pollutant-name">Carbon Monoxide</div>
+                    <div class="pollutant-value">Current: 8 ppm</div>
+                </div>
+            </div>
+            
+            <div class="gauge">
+                <div class="gauge-face">
+                    <div class="gauge-fill" id="co-fill" style="background: #8BC34A; height: 20%;"></div>
+                </div>
+                <div class="gauge-center"></div>
+                <div class="gauge-needle" id="co-needle" style="transform: translateX(-50%) rotate(-72deg);"></div>
+            </div>
+            
+            <div class="toxicity-level" style="background: #8BC34A;">Très faiblement toxique</div>
+            
+            <div class="gauge-levels">
+                <div class="level level-0">0</div>
+                <div class="level level-1">1</div>
+                <div class="level level-2">2</div>
+                <div class="level level-3">3</div>
+                <div class="level level-4">4</div>
+                <div class="level level-5">5</div>
+            </div>
+            
+            <div class="sensor-info">Sensors: MQ-7, Figaro TGS5042</div>
+        </div>
+        
+        <!-- PM2.5 Gauge -->
+        <div class="gauge-container">
+            <div class="pollutant-header">
+                <div class="pollutant-icon">PM2.5</div>
+                <div>
+                    <div class="pollutant-name">Fine Particles</div>
+                    <div class="pollutant-value">Current: 35 µg/m³</div>
+                </div>
+            </div>
+            
+            <div class="gauge">
+                <div class="gauge-face">
+                    <div class="gauge-fill" id="pm25-fill" style="background: #FFEB3B; height: 40%;"></div>
+                </div>
+                <div class="gauge-center"></div>
+                <div class="gauge-needle" id="pm25-needle" style="transform: translateX(-50%) rotate(-36deg);"></div>
+            </div>
+            
+            <div class="toxicity-level" style="background: #FFEB3B;">Faiblement toxique</div>
+            
+            <div class="gauge-levels">
+                <div class="level level-0">0</div>
+                <div class="level level-1">1</div>
+                <div class="level level-2">2</div>
+                <div class="level level-3">3</div>
+                <div class="level level-4">4</div>
+                <div class="level level-5">5</div>
+            </div>
+            
+            <div class="sensor-info">Sensors: SPS30, Nova SD5011, PMS5003</div>
+        </div>
+        
+        <!-- O3 Gauge -->
+        <div class="gauge-container">
+            <div class="pollutant-header">
+                <div class="pollutant-icon">O₃</div>
+                <div>
+                    <div class="pollutant-name">Ozone</div>
+                    <div class="pollutant-value">Current: 0.08 ppm</div>
+                </div>
+            </div>
+            
+            <div class="gauge">
+                <div class="gauge-face">
+                    <div class="gauge-fill" id="o3-fill" style="background: #8BC34A; height: 20%;"></div>
+                </div>
+                <div class="gauge-center"></div>
+                <div class="gauge-needle" id="o3-needle" style="transform: translateX(-50%) rotate(-72deg);"></div>
+            </div>
+            
+            <div class="toxicity-level" style="background: #8BC34A;">Très faiblement toxique</div>
+            
+            <div class="gauge-levels">
+                <div class="level level-0">0</div>
+                <div class="level level-1">1</div>
+                <div class="level level-2">2</div>
+                <div class="level level-3">3</div>
+                <div class="level level-4">4</div>
+                <div class="level level-5">5</div>
+            </div>
+            
+            <div class="sensor-info">Sensors: MQ-131, Aeroqual</div>
+        </div>
+        
+        <!-- NO2 Gauge -->
+        <div class="gauge-container">
+            <div class="pollutant-header">
+                <div class="pollutant-icon">NO₂</div>
+                <div>
+                    <div class="pollutant-name">Nitrogen Dioxide</div>
+                    <div class="pollutant-value">Current: 0.06 ppm</div>
+                </div>
+            </div>
+            
+            <div class="gauge">
+                <div class="gauge-face">
+                    <div class="gauge-fill" id="no2-fill" style="background: #4CAF50; height: 10%;"></div>
+                </div>
+                <div class="gauge-center"></div>
+                <div class="gauge-needle" id="no2-needle" style="transform: translateX(-50%) rotate(-81deg);"></div>
+            </div>
+            
+            <div class="toxicity-level" style="background: #4CAF50;">Non toxique</div>
+            
+            <div class="gauge-levels">
+                <div class="level level-0">0</div>
+                <div class="level level-1">1</div>
+                <div class="level level-2">2</div>
+                <div class="level level-3">3</div>
+                <div class="level level-4">4</div>
+                <div class="level level-5">5</div>
+            </div>
+            
+            <div class="sensor-info">Sensors: Figaro TGS2600, TGS2201</div>
+        </div>
+        
+        <!-- TVOC Gauge -->
+        <div class="gauge-container">
+            <div class="pollutant-header">
+                <div class="pollutant-icon">VOC</div>
+                <div>
+                    <div class="pollutant-name">Total VOCs</div>
+                    <div class="pollutant-value">Current: 350 ppb</div>
+                </div>
+            </div>
+            
+            <div class="gauge">
+                <div class="gauge-face">
+                    <div class="gauge-fill" id="tvoc-fill" style="background: #8BC34A; height: 20%;"></div>
+                </div>
+                <div class="gauge-center"></div>
+                <div class="gauge-needle" id="tvoc-needle" style="transform: translateX(-50%) rotate(-72deg);"></div>
+            </div>
+            
+            <div class="toxicity-level" style="background: #8BC34A;">Très faiblement toxique</div>
+            
+            <div class="gauge-levels">
+                <div class="level level-0">0</div>
+                <div class="level level-1">1</div>
+                <div class="level level-2">2</div>
+                <div class="level level-3">3</div>
+                <div class="level level-4">4</div>
+                <div class="level level-5">5</div>
+            </div>
+            
+            <div class="sensor-info">Sensors: SGP30, CCS811, BME680</div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='/js/main.js') }}" async defer></script>
+</body>
+
+</html>
