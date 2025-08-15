@@ -1,4 +1,4 @@
-# Modul'Air Dashboard Simulation
+# Modul'Air Simulation d'un tableau de bord
 
 ![Dashboard Screenshot](../static/dashboard.png)
 
@@ -7,6 +7,7 @@
    
 ```bash
     cd ~
+    sudo apt install git fonts-noto-color-emoji
     git clone https://github.com/Thierry-G/modul-air.git
     cd modul-air/workshops/simulation/dashboard
 ```
