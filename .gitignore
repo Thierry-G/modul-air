@@ -1,27 +1,3 @@
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-<<<<<<<< HEAD:.gitignore
-/workshops/venv/
-=======
->>>>>>> Stashed changes
-/docs/systemes.md
-/game/js/
-/game/python/
-/game/svg/IMG_1557.PNG
-/game/svg/IMG_1557.svg
-/game/svg/IMG_1558.PNG
-/game/svg/IMG_1558.svg
-/game/svg/IMG_1775.png
-/game/svg/IMG_1945.png
-/game/svg/IMG_1945.svg
-/game/svg/tamagoshi.svg
-<<<<<<< Updated upstream
-/game/svg/*.afdesign
-========
-
-
->>>>>>>> cf8f8d3178dcb46fb3c4036fbb49611d8308594d:.githubignore
-=======
 workshops/venv/
 docs/systemes.md
 game/js/
@@ -35,9 +11,5 @@ game/svg/IMG_1945.png
 game/svg/IMG_1945.svg
 game/svg/tamagoshi.svg
 game/svg/*.afdesign
->>>>>>> cf8f8d3178dcb46fb3c4036fbb49611d8308594d
-=======
-/game/Sans titre.afdesign~lock~
-/game/svg/*.afdesign
-
->>>>>>> Stashed changes
+game/Sans titre.afdesign~lock~
+game/svg/*.afdesign
