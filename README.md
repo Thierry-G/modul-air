@@ -20,7 +20,7 @@ Modul'air peut être déployé en station:
 - [`capteurs/`](/capteurs/README.md) :  Liste exhaustives des capteurs disponibles.
 - [`/docs`](/docs/README.md) :  Documentation technique.
 - [`/docs/data`](/docs/data/README.md) :  Exemples de jeux de données fournis par les capteurs.
-  [`/docs/data/Seuils.md`](/docs/data/Seuils.md) :  Seuils de toxicité en échelle de Lickert (5).
+- [`/docs/data/Seuils.md`](/docs/data/Seuils.md) :  Seuils de toxicité en échelle de Lickert (5).
 - [`/docs/lexique.md`](/docs/lexique.md) : Lexique des polluants et paramètres mesurés.
 - [`/docs/lexiqueInterfaces.md`](/docs/lexiqueInterfaces.md) : Lexique des interfaces.
 - [`/game`](/game/README.md) : Modul'air tamagoshi
