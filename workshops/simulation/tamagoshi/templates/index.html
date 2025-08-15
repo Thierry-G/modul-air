@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>🌤️ Tableau de bord ludique de la qualité de l'air</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/tamagoshi.min.css') }}">
+</head>
+
+<body>
+    <div class="cloud cloud-1"></div>
+    <div class="cloud cloud-2"></div>
+
+    <!-- Tamagoshi Container -->
+    <div id="tamagoshi-container"
+         class="tamagoshi toxicity-{{ tamagoshi_toxicity }}{% if tamagoshi_out %} out{% endif %}">
+        {% if tamagoshi_out %}
+            {% set tamagoshi_state = 'TamagoshiMask' %}
+        {% else %}
+            {% set tamagoshi_state = 'TamagoshiHome' %}
+        {% endif %}
+        <svg id="tamagoshi-sprite" width="120" height="120">
+            <use xlink:href="{{ url_for('static', filename='svg/Sprite.svg') }}#Tamagoshi" />
+        </svg>
+        <div id="tamagoshi-status">
+            {% if tamagoshi_toxicity == 0 %}
+                Heureux
+            {% elif tamagoshi_toxicity <= 2 %}
+                Normal
+            {% elif tamagoshi_toxicity <= 4 %}
+                Inquiet
+            {% else %}
+                Malade
+            {% endif %}
+            {% if tamagoshi_out %}
+                <span> (En promenade)</span>
+            {% endif %}
+        </div>
+    </div>
+
+    <header>
+        <h1>🌤️ Tamagoshi de la qualité de l'air</h1>
+        <div class="subtitle">Votre Tamagoshi réagit à la pollution !</div>
+    </header>
+
+    <!-- ...existing code... -->
+</body>
+
+</html>
