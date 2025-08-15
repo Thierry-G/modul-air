@@ -25,6 +25,7 @@ Modul'air peut être déployé en station:
 - [`/docs/lexiqueInterfaces.md`](/docs/lexiqueInterfaces.md) : Lexique des interfaces.
 - [`/game`](/game/README.md) : Modul'air tamagoshi
 - [`/workshops`](/workshops/README.md) : Matériel support des ateliers et des 'Do It Yourself'.
+- [`/workshops/simulation/dashboard`](/workshops/README.md) : Matériel support des ateliers et des 'Do It Yourself'.
 
 ---
 

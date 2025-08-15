@@ -1,4 +1,4 @@
-# Modul'Air Workshop
+# Modul'Air Dashboard Simulation
 
 Fichiers de base pour créer une simulation des interfaces de la sonde avec python Flask.
 
