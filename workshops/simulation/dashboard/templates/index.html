@@ -7,7 +7,7 @@
     <title>🌤️ Tableau de bord ludique de la qualité de l'air</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{{ url_for('static', filename='/css/main.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/main.css') }}">
 </head>
 
 <body>
@@ -21,6 +21,59 @@
     
     <div class="dashboard">
         {% for gauge in gauges %}
+        {% if gauge.is_env %}
+        <div class="gauge-container">
+            <div class="pollutant-header">
+                <div class="pollutant-icon temp">{% if gauge.name == 'Température' %}🌡️{% elif gauge.name == 'Humidité' %}💧{% else %}💧{% endif %}</div>
+                <div>
+                    <div class="pollutant-name">{{ gauge.display_name }}</div>
+                    <div class="pollutant-value">
+                        {% if gauge.name == 'Température' %}
+                        Actuel : <span id="temperature-value">{{ gauge.value }}</span> <span id="temperature-unit">{{ gauge.unit }}</span>
+                        <button id="toggle-temp-unit" title="Changer unité" style="background:none;border:none;cursor:pointer;font-size:1.2em;vertical-align:middle;">🔄</button>
+                        {% elif gauge.name == 'Humidité' %}
+                        Actuel : <span id="humidity-value">{{ gauge.value }}</span> <span id="humidity-unit">{{ gauge.unit }}</span>
+                        {% else %}
+                        Actuel : {{ gauge.value }} {{ gauge.unit }}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% if gauge.name == 'Température' %}
+            <div class="thermometer-card" style="display: flex; align-items: flex-end;">
+                <div class="thermometer" style="display: flex; flex-direction: column; align-items: center; justify-content: flex-end;">
+                    <div class="thermometer-bulb"></div>
+                    <div class="thermometer-bar">
+                        <div class="thermometer-fill" id="thermometer-fill"></div>
+                    </div>
+                </div>
+                <div class="thermometer-scale" style="margin-left: 24px; display: flex; flex-direction: column; justify-content: space-between; height: 160px;">
+                    <span class="thermo-scale-label temp-hot" style="color: #f44336;">33°C+<br><small>Trop chaud</small></span>
+                    <span class="thermo-scale-label temp-warm" style="color: #ff9800;">26°C<br><small>Chaud</small></span>
+                    <span class="thermo-scale-label temp-normal" style="color: #4CAF50;">18°C<br><small>Normal</small></span>
+                    <span class="thermo-scale-label temp-cool" style="color: #00bcd4;">10°C<br><small>Frais</small></span>
+                    <span class="thermo-scale-label temp-cold" style="color: #3f51b5;">0°C<br><small>Froid</small></span>
+                </div>
+            </div>
+            {% elif gauge.name == 'Humidité' %}
+            <div class="humidity-card" style="display: flex; align-items: flex-end;">
+                <div class="humidity-bar-container" style="display: flex; flex-direction: column; align-items: center; justify-content: flex-end;">
+                    <div class="humidity-droplet"></div>
+                    <div class="humidity-bar">
+                        <div class="humidity-fill" id="humidity-fill"></div>
+                    </div>
+                </div>
+                <div class="humidity-scale" style="margin-left: 24px; display: flex; flex-direction: column; justify-content: space-between; height: 160px;">
+                    <span class="humidity-scale-label" style="color: #2196f3;">100%<br><small>Très humide</small></span>
+                    <span class="humidity-scale-label" style="color: #4caf50;">70%<br><small>Humide</small></span>
+                    <span class="humidity-scale-label" style="color: #ffeb3b;">40%<br><small>Normal</small></span>
+                    <span class="humidity-scale-label" style="color: #ff9800;">20%<br><small>Sec</small></span>
+                    <span class="humidity-scale-label" style="color: #f44336;">0%<br><small>Très sec</small></span>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        {% else %}
         <div class="gauge-container">
             <div class="pollutant-header">
                 <div class="pollutant-icon">{{ gauge.name }}</div>
@@ -29,7 +82,6 @@
                     <div class="pollutant-value">Actuel : {{ gauge.value }} {{ gauge.unit }}</div>
                 </div>
             </div>
-            
             <div class="gauge" data-gauge-id="{{ {'CO₂':'co2','CO':'co','PM2.5':'pm25','O₃':'o3','NO₂':'no2','TVOC':'tvoc','NH₃':'nh3','Benzène':'benzene','PM10':'pm10'}[gauge.name] if gauge.name in ['CO₂','CO','PM2.5','O₃','NO₂','TVOC','NH₃','Benzène','PM10'] else gauge.name|lower|replace('.', '') }}" data-gauge-value="{{ gauge.value }}" data-gauge-toxicity="{{ gauge.likert_idx }}">
                 <div class="gauge-face">
                     <div class="gauge-fill" id="{{ {'CO₂':'co2','CO':'co','PM2.5':'pm25','O₃':'o3','NO₂':'no2','TVOC':'tvoc','NH₃':'nh3','Benzène':'benzene','PM10':'pm10'}[gauge.name] if gauge.name in ['CO₂','CO','PM2.5','O₃','NO₂','TVOC','NH₃','Benzène','PM10'] else gauge.name|lower|replace('.', '') }}-fill" style="background: {{ gauge.toxicity_color }};"></div>
@@ -37,9 +89,7 @@
                 <div class="gauge-center"></div>
                 <div class="gauge-needle" id="{{ {'CO₂':'co2','CO':'co','PM2.5':'pm25','O₃':'o3','NO₂':'no2','TVOC':'tvoc','NH₃':'nh3','Benzène':'benzene','PM10':'pm10'}[gauge.name] if gauge.name in ['CO₂','CO','PM2.5','O₃','NO₂','TVOC','NH₃','Benzène','PM10'] else gauge.name|lower|replace('.', '') }}-needle"></div>
             </div>
-            
             <div class="toxicity-level" style="background: {{ gauge.toxicity_color }};">{{ gauge.toxicity_label }}</div>
-            
             <div class="gauge-levels">
                 <div class="level level-0">0</div>
                 <div class="level level-1">1</div>
@@ -48,9 +98,9 @@
                 <div class="level level-4">4</div>
                 <div class="level level-5">5</div>
             </div>
-            
             <div class="sensor-info">Capteurs : {{ gauge.capteurs }}</div>
         </div>
+        {% endif %}
         {% endfor %}
     </div>
     <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>

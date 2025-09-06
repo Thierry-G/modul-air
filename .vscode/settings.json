@@ -3,12 +3,12 @@
         {
             "format": "expanded",
             "extensionName": ".css",
-            "savePath": "/workshops/simulation/tamagoshi/static/css"
+            "savePath": "/workshops/simulation/test/static/css"
         },
         {
             "extensionName": ".min.css",
             "format": "compressed",
-            "savePath": "/workshops/simulation/tamagoshi/static/css"
+            "savePath": "/workshops/simulation/test/static/css"
         }
     ]
 }

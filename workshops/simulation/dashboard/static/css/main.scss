@@ -1,5 +1,112 @@
+/* Humidity styles */
+.humidity-card {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin: 20px 0;
+    gap: 0;
+}
+
+.humidity-bar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.humidity-bar {
+    position: relative;
+    width: 20px;
+    height: 160px;
+    background: #e0f7fa;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    overflow: visible;
+    display: flex;
+    align-items: flex-end;
+    z-index: 2;
+    box-shadow: 0 2px 8px rgba(33, 150, 243, 0.08);
+}
+
+.humidity-fill {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0%;
+    background: linear-gradient(180deg, #2196f3 0%, #b3e5fc 100%);
+    border-radius: 10px;
+    transition: height 1.5s ease-out;
+    z-index: 3;
+    opacity: 1;
+}
+
+.humidity-droplet {
+    width: 32px;
+    height: 40px;
+    background: #2196f3;
+    border-radius: 50% 50% 50% 50% / 60% 60% 100% 100%;
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 10px rgba(33, 150, 243, 0.15);
+    z-index: 5;
+    border: 4px solid #b3e5fc;
+}
+
+.humidity-scale {
+    position: relative;
+    left: 0;
+    top: 0;
+    height: 160px;
+    width: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    z-index: 10;
+    pointer-events: none;
+    margin-left: 16px;
+}
+
+.humidity-scale-label {
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: left;
+    line-height: 1.1;
+    white-space: nowrap;
+    padding-left: 8px;
+    margin-bottom: 0.5em;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
+    padding: 4px 8px;
+}
+
+.humidity-scale-label:last-child {
+    margin-bottom: 0;
+}
+
+/* Specific humidity scale label colors for clarity */
+.humidity-scale-label.humid-very {
+    color: #2196f3;
+}
+.humidity-scale-label.humid-high {
+    color: #4caf50;
+}
+.humidity-scale-label.humid-normal {
+    color: #ffeb3b;
+}
+.humidity-scale-label.humid-low {
+    color: #ff9800;
+}
+.humidity-scale-label.humid-verylow {
+    color: #f44336;
+}
 * {
     box-sizing: border-box;
+
     margin: 0;
     padding: 0;
 }
@@ -62,31 +169,34 @@ h1 {
 .pollutant-header {
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 1.68rem;
 }
 
 .pollutant-icon {
     width: 60px;
     height: 60px;
+    max-width: 60px;
+    max-height: 60px;
     background: #ffd166;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 24px;
+    font-size: 16px;
     font-weight: bold;
-    margin-right: 15px;
+    margin-right: .76rem;
     border: 3px solid #ff9e6d;
 }
 
 .pollutant-name {
-    font-size: 1.8rem;
+    font-size: 1.2rem;
+    word-break: normal;
     color: #118ab2;
     font-weight: bold;
 }
 
 .pollutant-value {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: #073b4c;
     margin-top: 5px;
 }
@@ -196,7 +306,8 @@ h1 {
     background: #073b4c;
     bottom: 0;
     left: 50%;
-    transform: translateX(-50%) rotate(-90deg); /* initial position */
+    transform: translateX(-50%) rotate(-90deg);
+    /* initial position */
     transform-origin: bottom center;
     transition: transform 1.5s ease-out;
     border-radius: 4px 4px 0 0;
@@ -229,8 +340,10 @@ h1 {
     color: #fff;
 
     // Jaune et orange : texte foncé pour contraste
-    &[style*="#FFEB3B"], // fond jaune
-    &[style*="#FF9800"] { // fond orange
+    &[style*="#FFEB3B"],
+    // fond jaune
+    &[style*="#FF9800"] {
+        // fond orange
         color: #222;
     }
 }
@@ -254,6 +367,8 @@ h1 {
         transform: translateY(-15px);
     }
 }
+
+
 
 @keyframes pulse {
     0% {
@@ -311,4 +426,139 @@ h1 {
     h1 {
         font-size: 2.5rem;
     }
+}
+
+/* Thermometer styles */
+.thermometer-card {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin: 20px 0;
+    gap: 0;
+}
+
+.thermometer {
+    position: relative;
+    width: 60px;
+    height: 220px;
+    background: #f0f9ff;
+    border-radius: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.thermometer-scale {
+    position: relative;
+    left: 0;
+    top: 0;
+    height: 160px;
+    width: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    z-index: 10;
+    pointer-events: none;
+    margin-left: 16px;
+}
+
+.thermometer-bar {
+    position: relative;
+    width: 20px;
+    height: 160px;
+    background: #e0e0e0;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    overflow: visible;
+    display: flex;
+    align-items: flex-end;
+    z-index: 2;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.thermometer-fill {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0%;
+    background: linear-gradient(180deg, #ff6b6b 0%, #ffd166 100%);
+    border-radius: 10px;
+    transition: height 1.5s ease-out;
+    z-index: 3;
+    opacity: 1;
+}
+
+.thermometer-bulb {
+    width: 40px;
+    height: 40px;
+    background: #ff6b6b;
+    border-radius: 50%;
+    border: 5px solid #ffd166;
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    z-index: 5;
+}
+
+.thermo-scale-label {
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: left;
+    line-height: 1.1;
+    white-space: nowrap;
+    padding-left: 8px;
+    margin-bottom: 0.5em;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
+    padding: 4px 8px;
+}
+
+.thermo-scale-label:last-child {
+    margin-bottom: 0;
+}
+
+/* Specific thermometer scale label colors for clarity */
+.thermo-scale-label[style*="color: #3f51b5"] {
+    color: #3f51b5;
+}
+
+.thermo-scale-label[style*="color: #00bcd4"] {
+    color: #00bcd4;
+}
+
+.thermo-scale-label[style*="color: #4CAF50"] {
+    color: #4CAF50;
+}
+
+.thermo-scale-label[style*="color: #ff9800"] {
+    color: #ff9800;
+}
+
+.thermo-scale-label[style*="color: #f44336"] {
+    color: #f44336;
+}
+
+.temp {
+    font-size: 2.1rem;
+}
+
+#toggle-temp-unit {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    font-size: 2.4rem !important;
+    vertical-align: middle;
+    float: right;
+    position: absolute;
+    top: 32px;
+    padding: .16rem;
 }

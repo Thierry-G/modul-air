@@ -33,17 +33,19 @@ CAPTEURS = {
 
 UNITES = {
     "CO₂": "ppm", "CO": "ppm", "NO₂": "ppm", "O₃": "ppm", "NH₃": "ppm",
-    "Benzène": "ppm", "TVOC": "ppb", "PM2.5": "µg/m³", "PM10": "µg/m³"
+    "Benzène": "ppm", "TVOC": "ppb", "PM2.5": "µg/m³", "PM10": "µg/m³",
+    "Température": "°C", "Humidité": "%"
 }
 
-# Default values for dashboard
 DEFAULT_VALUES = {
     "CO₂": 1200,
     "CO": 8,
     "PM2.5": 35,
     "O₃": 0.08,
     "NO₂": 0.06,
-    "TVOC": 350
+    "TVOC": 350,
+    "Température": 22.5,
+    "Humidité": 45.0
 }
 
 TOXICITY_LABELS = [
@@ -82,26 +84,35 @@ def index():
 
     gauges = []
     for pollutant in DEFAULT_VALUES.keys():
-        seuils = SEUILS.get(pollutant, [])
-        value = values[pollutant]
-        likert_idx = get_likert_index(value, seuils)
-        gauge = {
-            "name": pollutant,
-            "display_name": {
-                "CO₂": "Dioxyde de Carbone",
-                "CO": "Monoxyde de Carbone",
-                "PM2.5": "Particules fines",
-                "O₃": "Ozone",
-                "NO₂": "Dioxyde d'Azote",
-                "TVOC": "Total VOCs"
-            }.get(pollutant, pollutant),
-            "value": value,
-            "unit": UNITES.get(pollutant, ""),
-            "likert_idx": likert_idx,
-            "toxicity_label": TOXICITY_LABELS[likert_idx],
-            "toxicity_color": TOXICITY_COLORS[likert_idx],
-            "capteurs": CAPTEURS.get(pollutant, "")
-        }
+        if pollutant in ["Température", "Humidité"]:
+            gauge = {
+                "name": pollutant,
+                "display_name": pollutant,
+                "value": values[pollutant],
+                "unit": UNITES.get(pollutant, ""),
+                "is_env": True
+            }
+        else:
+            seuils = SEUILS.get(pollutant, [])
+            value = values[pollutant]
+            likert_idx = get_likert_index(value, seuils)
+            gauge = {
+                "name": pollutant,
+                "display_name": {
+                    "CO₂": "Dioxyde de Carbone",
+                    "CO": "Monoxyde de Carbone",
+                    "PM2.5": "Particules fines",
+                    "O₃": "Ozone",
+                    "NO₂": "Dioxyde d'Azote",
+                    "TVOC": "Total VOCs"
+                }.get(pollutant, pollutant),
+                "value": value,
+                "unit": UNITES.get(pollutant, ""),
+                "likert_idx": likert_idx,
+                "toxicity_label": TOXICITY_LABELS[likert_idx],
+                "toxicity_color": TOXICITY_COLORS[likert_idx],
+                "capteurs": CAPTEURS.get(pollutant, "")
+            }
         gauges.append(gauge)
 
     return render_template(
