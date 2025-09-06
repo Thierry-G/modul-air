@@ -1,6 +1,6 @@
 # Modul'Air Simulation d'un tableau de bord
 
-![Dashboard Screenshot](../static/dashboard.png)
+![Dashboard Screenshot](static/dashboard.png)
 
 ## Installation
 1. Récupération du dépot
