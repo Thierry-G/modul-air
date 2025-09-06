@@ -1,5 +1,6 @@
 ./vscode
-workshops/simulation//tamagoshi
+workshops/simulation//tamagoshi/
+workshops/simulation/dashboard/venv
 workshops/simulation/dashboard/venv
 docs/systemes.md
 game/graphics/
